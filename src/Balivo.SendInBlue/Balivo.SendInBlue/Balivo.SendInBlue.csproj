@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Balivo.SendInBlue</PackageId>
+    <Authors>Jefferson S. Balivo</Authors>
+    <Company>OnFriday Technologies</Company>
+    <PackageTags>sendinblue sdk</PackageTags>
+    <Copyright>Copyright © Jefferson S. Balivo 2018</Copyright>
+    <PackageProjectUrl>https://github.com/balivo/sendinblue-sdk</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/balivo/sendinblue-sdk/readme.me</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/balivo/sendinblue-sdk</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>SendInBlue "unofficial" client for .NET. SendinBlue empowers businesses to build and grow relationships through marketing campaigns, transactional messaging and marketing automation. Our platform combines a robust suite of email and SMS messaging services within a single, user-friendly solution. Happy Sending! For more information see: https://sendinblue.com.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+</Project>
