@@ -5,28 +5,28 @@ namespace Balivo.SendInBlue
 {
     public sealed class SmtpSendTransactionalArgs
     {
-        [JsonProperty("sender")]
+        [JsonRequired, JsonProperty("sender")]
         public SendInBlueEmailInfo Sender { get; set; }
 
-        [JsonProperty("to")]
+        [JsonRequired, JsonProperty("to")]
         public List<SendInBlueEmailInfo> To { get; set; }
 
-        [JsonProperty("bcc")]
+        [JsonRequired, JsonProperty("bcc")]
         public List<SendInBlueEmailInfo> Bcc { get; set; }
 
         [JsonProperty("cc")]
         public List<SendInBlueEmailInfo> Cc { get; set; }
 
-        [JsonProperty("htmlContent")]
+        [JsonRequired, JsonProperty("htmlContent")]
         public string HtmlContent { get; set; }
 
-        [JsonProperty("textContent")]
+        [JsonRequired, JsonProperty("textContent")]
         public string TextContent { get; set; }
 
-        [JsonProperty("subject")]
+        [JsonRequired, JsonProperty("subject")]
         public string Subject { get; set; }
 
-        [JsonProperty("replyTo")]
+        [JsonRequired, JsonProperty("replyTo")]
         public SendInBlueEmailInfo ReplyTo { get; set; }
 
         // [JsonProperty("attachment")]
