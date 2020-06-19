@@ -35,7 +35,7 @@ namespace Balivo.SendInBlue
 
                 _HttpClient.DefaultRequestHeaders.Add("api-key", key);
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -75,14 +75,22 @@ namespace Balivo.SendInBlue
             }
         }
 
-        private Task<T> PostJsonAsync<T>(string resource, object content) where T : SendInBlueResultBase => PostAsync<T>(resource, content == null ? throw new ArgumentNullException(nameof(content)) : new StringContent(JsonConvert.SerializeObject(content), Encoding.UTF8, "application/json"));
+        private Task<T> PostJsonAsync<T>(string resource, object content) where T : SendInBlueResultBase =>
+            PostAsync<T>(resource, content == null ?
+            throw new ArgumentNullException(nameof(content)) :
+            new StringContent(
+                JsonConvert.SerializeObject(
+                    content, 
+                    new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore }), 
+                Encoding.UTF8, 
+                "application/json"));
 
         /*
            Send Transactional Email.
            @param {Object} data contains dynamic object with a collection of keys and values from Dictionary.
            @options data {Array} to: Email address of the recipient(s). It should be sent as an associative array. Example: array("to@example.net"=>"to whom"). You can use commas to separate multiple recipients [Mandatory]
            @options data {String} subject: Message subject [Mandatory]
-           @options data {Array} from Email address for From header. It should be sent as an array. Example: array("from@email.com","from email") [Mandatory]
+           @options data {Array} sender: Email address for From header. It should be sent as an array. Example: array("from@email.com","from email") [Mandatory]
            @options data {String} html: Body of the message. (HTML version) [Mandatory]. To send inline images, use <img src="{YourFileName.Extension}" alt="image" border="0" >, the 'src' attribute value inside {} (curly braces) should be same as the filename used in 'inline_image' parameter
            @options data {String} text: Body of the message. (text version) [Optional]
            @options data {Array} cc: Same as to but for Cc. Example: array("cc@example.net","cc whom") [Optional]
